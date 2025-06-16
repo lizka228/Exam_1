@@ -76,7 +76,8 @@
 Название DAG - pipeline_dag.py находится в папке /dags. Этот **Airflow DAG** реализует автоматизированный пайплайн для предобработки данных, обучения модели **Logistic Regression**, её оценки и сохранения результатов.
 Граф DAG:
 
-![image](https://github.com/user-attachments/assets/34546867-a3b2-40f4-a8cb-71ce7638443e)
+![image](https://github.com/user-attachments/assets/3f2c2fd2-33a2-4c4d-a316-64ad89f3939c)
+
 
 **Описание зависимостей:**
 
