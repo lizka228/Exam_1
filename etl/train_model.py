@@ -17,7 +17,7 @@ def train_model(**kwargs):
     
     if X_train.shape[0] < 10:
         logging.error("Not enoudh data for training! STOP DAG.")
-        raise AirflowException("The model cannot be trained on a small dataset!"
+        raise AirflowException("The model cannot be trained on a small dataset!") 
 
     model = LogisticRegression()
     model.fit(X_train, y_train)

@@ -4,6 +4,7 @@ import logging
 import os
 from dotenv import load_dotenv
 import yadisk
+import datetime
 
 load_dotenv()
 MODEL_PATH = os.getenv("MODEL_PATH")
@@ -38,10 +39,13 @@ def save_results(**kwargs):
         with client:
             if not client.exists(f"/{PAPKA}/"):
               client.mkdir(f"/{PAPKA}/")  
-            client.upload(MODEL_PATH, f"/{PAPKA}/model.pkl")
-            logging.info(f"Модель загружена на Яндекс Диск: /{PAPKA}/model.pkl")
-            client.upload(METRICS_PATH, f"/{PAPKA}/model_quality.json")
-            logging.info(f"Метрики загружены на Яндекс Диск: /{PAPKA}/model_quality.json")
+              
+            current_date = datetime.date.today().isoformat()
+            
+            client.upload(MODEL_PATH, f"/{PAPKA}/model_{current_date}.pkl", overwrite=True)
+            logging.info(f"Модель загружена на Яндекс Диск: /{PAPKA}/model_{current_date}.pkl")
+            client.upload(METRICS_PATH, f"/{PAPKA}/model_quality_{current_date}.json", overwrite=True)
+            logging.info(f"Метрики загружены на Яндекс Диск: /{PAPKA}/model_quality_{current_date}.json")
     except Exception as e:
         logging.warning("Не смогли сохранить на Яндекс диск, так как не указан токен и (или) пути к файлам!!!", e)
 
