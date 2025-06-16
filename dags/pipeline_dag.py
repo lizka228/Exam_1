@@ -64,7 +64,7 @@ task_evaluate = PythonOperator(task_id= 'evaluate_model' ,
 task_save = PythonOperator(task_id= 'save_results' ,
                            python_callable=save_results.save_results,
                            retries=3, 
-                           retry_delay=timedelta(minutes=1)
+                           retry_delay=timedelta(minutes=1),
                            dag=ml_dag)
 
 
